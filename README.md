@@ -25,24 +25,22 @@ To run `mindwave.py`, you'll need to have a Python environment set up with all t
    cd Taking_Data_With_EEG
 2.**Create a Virtual Environment**
   Ensure you have virtualenv installed. If not, install it using:
-  ```bash
+
   pip install virtualenv
   Then create and activate the virtual environment:
-```bash
+
   virtualenv eeg_env
   # Windows
-```bash
   .\eeg_env\Scripts\activate
   # Mac/Linux
-```bash
   source eeg_env/bin/activate
+  
 3.**Install Dependencies**
   Install the required packages using requirements.txt:
-```bash
   pip install -r requirements.txt
+  
 ## Usage
   To start recording EEG data, simply run the script:
-```bash
   python mindwave.py
 ## Data Output
   The data collected is stored as a CSV file in the current working directory.
