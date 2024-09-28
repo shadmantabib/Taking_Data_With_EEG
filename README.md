@@ -37,10 +37,12 @@ To run `mindwave.py`, you'll need to have a Python environment set up with all t
 
    ```bash
    virtualenv eeg_env
-
+   ```
+   ```bash
    # Windows
    .\eeg_env\Scripts\activate
-
+   ```
+   ```bash
    # Mac/Linux
    source eeg_env/bin/activate
    ```
