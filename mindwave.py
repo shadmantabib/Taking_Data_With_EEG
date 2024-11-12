@@ -4,7 +4,14 @@ import sys
 import json
 import time
 from telnetlib import Telnet
+# Gather metadata from user input
+time_slices =input('Enter the amount of time you want to take data(in seconds): ')
+time_slices = float(time_slices)
+person_name = input('Enter the name of the person: ')
 
+lefty_righty = input('Is the person left-handed or right-handed: ')
+name = input("Name Of the File: ")
+name += ".csv"
 # Initializing lists required to store the data.
 attention_values = []
 meditation_values = []
@@ -40,7 +47,7 @@ waveDict = {'lowGamma': 0, 'highGamma': 0, 'highAlpha': 0, 'delta': 0, 'highBeta
 signalLevel = 0
 
 # Capture data for 30 seconds
-while time.perf_counter() - start < 60:
+while time.perf_counter() - start < time_slices:
     blinkStrength = 0
     line = tn.read_until(b'\r').decode('utf-8').strip()
     if len(line) > 20:
@@ -72,10 +79,7 @@ while time.perf_counter() - start < 60:
         if outfile:
             outfptr.write(outputstr + "\n")
 
-# Gather metadata from user input
-person_name = input('Enter the name of the person: ')
 
-lefty_righty = input('Is the person left-handed or right-handed: ')
 
 
 # Create a DataFrame for the new data with each timestamp as a separate row
@@ -99,8 +103,7 @@ data = pd.DataFrame({
     # 'time_blink': [time_blinking] * len(time_array)
 })
 
-name = input("Name Of the File: ")
-name += ".csv"
+
 # Reading the data stored till now
 try:
     dataset = pd.read_csv(name)
